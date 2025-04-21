@@ -1,0 +1,21 @@
+[
+    {
+      "day": "Monday",
+      "time": "5:30 PM – 6:15 PM",
+      "class": "Cardio Blast",
+      "instructor": "Dax Della Penna"
+    },
+    {
+      "day": "Wednesday",
+      "time": "6:00 PM – 6:45 PM",
+      "class": "Strength Training",
+      "instructor": "Dax Della Penna"
+    },
+    {
+      "day": "Friday",
+      "time": "6:00 PM – 6:45 PM",
+      "class": "Flexibility & Mobility",
+      "instructor": "Dax Della Penna"
+    }
+  ]
+  

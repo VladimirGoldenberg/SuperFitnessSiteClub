@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Trainer Profile{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center">Meet Your Trainer</h1>
+
+    <div class="text-center mb-4">
+        <img src="https://via.placeholder.com/150" alt="Trainer Photo" class="mx-auto rounded-full mb-2">
+        <h2 class="text-xl font-semibold">Dax Della Penna</h2>
+        <p class="text-gray-500">Certified Personal Trainer</p>
+    </div>
+
+    <p class="text-gray-700 mb-4">
+        Dax brings years of fitness experience and a passion for helping clients achieve their health goals. 
+        His sessions are focused, motivating, and tailored to your needs.
+    </p>
+
+    <div class="mb-6">
+        <h3 class="text-lg font-semibold mb-2">Weekly Classes:</h3>
+        <ul class="list-disc list-inside text-gray-700">
+            <li>Wednesday – 6:00 PM to 6:45 PM</li>
+            <li>Friday – 6:00 PM to 6:45 PM</li>
+        </ul>
+    </div>
+
+    <div class="text-center">
+        <a href="mailto:dax_della_penna@yahoo.com" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition">
+            Contact Dax
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 👈 добавлено -->
+    <title>Super Fitness Club</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🏋️‍♂️ Super Fitness Club</h1>
+        <nav class="navbar"> <!-- 👈 добавлен класс -->
+            <a href="/">Home</a>
+            <a href="/schedule">Schedule</a>
+            <a href="/instructor">Instructor</a>
+            <a href="/chatbot">Chatbot</a>
+            <a href="/login">Login</a>
+            <a href="/virtual-class">Virtual Class</a>
+            <a href="/trainer">Trainer</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 Super Fitness Club. All rights reserved.</p>
+    </footer>
+</body>
+</html>

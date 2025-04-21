@@ -1,0 +1,37 @@
+<!-- templates/virtual_class.html -->
+{% extends "base.html" %}
+
+{% block title %}Join Virtual Class{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center">Join Your Virtual Training Session</h1>
+
+    <p class="mb-4 text-gray-700">
+        Your instructor will be live on Zoom. Please join a few minutes before the scheduled start time.
+    </p>
+
+    <div class="mb-6">
+        <div class="text-sm text-gray-600 mb-1">Class Time:</div>
+        <div class="font-semibold">Wednesday, 6:00 PM – 6:45 PM</div>
+    </div>
+
+    <div class="mb-6">
+        <div class="text-sm text-gray-600 mb-1">Instructor:</div>
+        <div class="font-semibold">Alex Thompson</div>
+    </div>
+
+    <div class="mb-6">
+        <div class="text-sm text-gray-600 mb-1">Platform:</div>
+        <div class="font-semibold">Zoom</div>
+    </div>
+
+    <a href="https://zoom.us/j/1234567890" target="_blank" rel="noopener noreferrer" class="block text-center w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition">
+        Join Zoom Session
+    </a>
+
+    <p class="mt-4 text-sm text-gray-500 text-center">
+        Don’t have Zoom? <a href="https://zoom.us/download" class="text-blue-500 underline">Download here</a>
+    </p>
+</div>
+{% endblock %}

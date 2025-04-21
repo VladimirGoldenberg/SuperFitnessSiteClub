@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="schedule-container">
+  <h1>Weekly Class Schedule</h1>
+  <div id="schedule-grid" class="grid"></div>
+
+  <!-- Sign-up Modal -->
+  <div id="signup-modal" class="modal hidden" style="display: none;">
+    <div class="modal-content">
+      <h2>Sign Up for Class</h2>
+      <form id="signup-form" method="POST" action="/signup">
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+        <input type="text" id="class-info" name="class_info" readonly>
+        <button type="submit">Submit</button>
+        <button type="button" id="close-modal">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('/static/data/class_schedule.json')
+        .then(response => response.json())
+        .then(data => {
+          const grid = document.getElementById('schedule-grid');
+          const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  
+          const grouped = {};
+          days.forEach(day => grouped[day] = []);
+          data.forEach(entry => {
+            if (grouped[entry.day]) grouped[entry.day].push(entry);
+          });
+  
+          days.forEach(day => {
+            const column = document.createElement('div');
+            column.className = 'day-column';
+  
+            const title = document.createElement('div');
+            title.className = 'day-name';
+            title.textContent = day;
+            column.appendChild(title);
+  
+            grouped[day].forEach(c => {
+              const item = document.createElement('div');
+              item.className = 'class-item';
+              item.innerHTML = `
+                <strong>${c.time}</strong><br>${c.class}<br><em>${c.instructor}</em><br>
+                <button class="signup-btn"
+                  data-day="${day}"
+                  data-class="${c.class}"
+                  data-time="${c.time}"
+                  data-instructor="${c.instructor}">Sign Up</button>`;
+              column.appendChild(item);
+            });
+  
+            grid.appendChild(column);
+          });
+  
+          // обработчик для кнопок "Sign Up"
+          document.querySelectorAll('.signup-btn').forEach(button => {
+            button.addEventListener('click', () => {
+              document.getElementById('signup-form').reset();
+              document.getElementById('class-info').value =
+                `${button.dataset.day} - ${button.dataset.class} with ${button.dataset.instructor} at ${button.dataset.time}`;
+                document.getElementById('signup-modal').style.display = 'block';
+            });
+          });
+  
+          // обработчик для Cancel (теперь точно работает)
+          document.getElementById('close-modal').addEventListener('click', () => {
+            console.log("Cancel clicked");
+            document.getElementById('signup-modal').classList.add('hidden');
+            document.getElementById('signup-modal').style.display = 'none';
+          });
+        });
+    });
+  </script>  
+{% endblock %}
+
+{% block styles %}
+<style>
+  .schedule-container {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+  }
+
+  .day-column {
+    background-color: #f0f4f8;
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  .day-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #0077cc;
+    text-align: center;
+  }
+
+  .class-item {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f9f9f9;
+    border-top: 2px solid #ccc;
+    padding: 20px;
+    display: none;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .modal-content {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .modal-content input {
+    display: block;
+    margin: 8px auto;
+    padding: 8px;
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .modal-content button {
+    padding: 6px 12px;
+    margin: 6px 8px;
+  }
+
+  .modal.hidden {
+    display: none !important;
+  }
+</style>
+{% endblock %}
