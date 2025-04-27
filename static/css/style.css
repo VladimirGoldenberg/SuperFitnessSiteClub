@@ -1,26 +1,229 @@
-/* Общий стиль для мобильных */
-@media (max-width: 768px) {
-  body {
-      font-size: 16px;
-      margin: 1rem;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fbfd;
+  margin: 0;
+  padding: 0;
+}
+
+/* Навигация */
+nav ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 0.5rem 0;
+  margin: 0;
+  gap: 1rem;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Заголовок секции */
+.section-title {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.75rem;
+}
+
+/* Обёртка расписания */
+.schedule-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Карточка занятия */
+.class-card {
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.class-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.class-card h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #007BFF;
+}
+
+.class-card p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* Кнопка "Sign Up" */
+.signup-btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.signup-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #004080);
+  transform: scale(1.05);
+}
+
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Контент модального окна */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Форма в модальном окне */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Поля ввода в форме */
+.modal-content input[type="text"],
+.modal-content input[type="email"] {
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Кнопка отправки формы */
+.submit-btn {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #004080);
+  transform: scale(1.05);
+}
+
+/* Крестик закрытия модалки */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+}
+@media (max-width: 600px) {
+  .schedule-wrapper {
+    padding: 1rem;
   }
 
-  h1 {
-      font-size: 1.5rem;
-      text-align: center;
+  .class-card {
+    width: 100%;
+    padding: 1.5rem;
   }
 
-  .navbar {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
+  .signup-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 
-  .navbar a {
-      font-size: 1.1rem;
-  }
-
-  main {
-      padding: 1rem;
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
+@media (max-width: 600px) {
+  .schedule-wrapper {
+    padding: 1rem;
+  }
+
+  .class-card {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .signup-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center; /* Центрируем ссылки */
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  nav a {
+    font-size: 1.1rem; /* Чуть больше шрифт для мобильного */
+  }
+}
+.flash-messages {
+  margin: 1em auto;
+  padding: 1em;
+  width: 90%;
+  max-width: 600px;
+}
+
+.flash-message {
+  background-color: #ffe0e0;
+  color: #a33;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+

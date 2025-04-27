@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 👈 добавлено -->
+  <head>
+    <meta charset="UTF-8" />
     <title>Super Fitness Club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    {% block styles %}{% endblock %}
+  </head>
+  <body>
     <header>
-        <h1>🏋️‍♂️ Super Fitness Club</h1>
-        <nav class="navbar"> <!-- 👈 добавлен класс -->
-            <a href="/">Home</a>
-            <a href="/schedule">Schedule</a>
-            <a href="/instructor">Instructor</a>
-            <a href="/chatbot">Chatbot</a>
-            <a href="/login">Login</a>
-            <a href="/virtual-class">Virtual Class</a>
-            <a href="/trainer">Trainer</a>
-        </nav>
+      <h1 class="site-title">🏋️‍♂️ Super Fitness Club</h1>
+      <nav>
+        <ul class="navbar">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('schedule') }}">Schedule</a></li>
+          <li><a href="{{ url_for('virtual_class') }}">Virtual Class</a></li>
+          <li><a href="{{ url_for('trainer_profile') }}">Trainer</a></li>
+          <li><a href="{{ url_for('instructor') }}">Instructor</a></li>
+          <li><a href="{{ url_for('chatbot_page') }}">Chatbot</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+      </nav>
     </header>
+
     <main>
-        {% block content %}{% endblock %}
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash-messages">
+            {% for message in messages %}
+              <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        {% endwith %}
+
+      {% block content %}{% endblock %}
     </main>
+
     <footer>
-        <p>&copy; 2025 Super Fitness Club. All rights reserved.</p>
+      <p>&copy; 2025 Super Fitness Club. All rights reserved.</p>
     </footer>
-</body>
+
+    {% block scripts %}{% endblock %}
+  </body>
 </html>
