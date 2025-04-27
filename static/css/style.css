@@ -226,4 +226,57 @@ nav a:hover {
   font-weight: bold;
   margin-bottom: 10px;
 }
+/* Оформление контейнера формы */
+.signup-form {
+  max-width: 400px;
+  margin: 0 auto; /* Центрируем по горизонтали */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ffffff; /* Белый фон */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+}
+
+/* Оформление заголовка */
+.signup-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Поля ввода */
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Кнопка Sign Up */
+.signup-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-form button:hover {
+  background-color: #45a049;
+}
+
+/* Копирайт */
+.signup-form .copyright {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
 

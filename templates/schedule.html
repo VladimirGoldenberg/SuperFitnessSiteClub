@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Class Schedule</h1>
+<div class="signup-form">
+  <h2>Class Schedule</h2>
 
   {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -56,4 +57,9 @@
 
     <button type="submit">Sign Up</button>
   </form>
+
+  <div class="copyright">
+    © 2025 Super Fitness Club. All rights reserved.
+  </div>
+</div>
 {% endblock %}
