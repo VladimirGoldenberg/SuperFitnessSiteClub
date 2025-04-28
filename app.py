@@ -12,7 +12,7 @@ load_dotenv()
 # Инициализация Flask
 app = Flask(__name__)
 os.makedirs(app.instance_path, exist_ok=True)
-app.secret_key = os.getenv('SECRET_KEY')
+app.secret_key = "superfitness_demo_secret_key_2025"
 
 # Настройки для базы данных
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.instance_path, 'superfitness.db')
