@@ -4,15 +4,15 @@
 <div class="signup-form">
   <h2>Class Schedule</h2>
 
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class="flash-messages">
-      {% for message in messages %}
-        <li>{{ message }}</li>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for category, message in messages %}
+        <li class="flash-message {{ category }}">{{ message }}</li>
       {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
+    </ul>
+  {% endif %}
+{% endwith %}
 
   <form method="POST" action="/schedule">
     <label for="student_name">Name:</label>
