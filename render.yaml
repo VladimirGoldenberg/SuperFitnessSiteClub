@@ -7,3 +7,13 @@ services:
     envVars:
       - key: SECRET_KEY
         value: super_secret_key_123456789
+      - key: MAIL_SERVER
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_USE_TLS
+        value: true
+      - key: MAIL_USERNAME
+        value: svetlana.babinskaya@gmail.com
+      - key: MAIL_PASSWORD
+        value: bsqgjtuqxspngqmy
