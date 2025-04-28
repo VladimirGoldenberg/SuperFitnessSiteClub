@@ -80,22 +80,28 @@ def schedule():
             db.session.add(new_registration)
             db.session.commit()
 
-            # Отправляем подтверждение по email
+            # Попытка отправить email
             try:
-                msg = Message(
-                    subject="Super Fitness Club Registration Confirmation",
-                    sender=app.config['MAIL_USERNAME'],
-                    recipients=[student_email],
-                    body=f"Hi {student_name},\n\nYou are registered for {day_of_week} at {time_of_day} ({session_length}).\n\nSee you in class!\n\n- Super Fitness Club Team"
-                )
-                mail.send(msg)
-                flash("Successfully registered and confirmation email sent.", "success")
+                # Проверка: если приложение не на Render Free, отправляем email
+                if not os.getenv('RENDER_EXTERNAL_HOSTNAME'):
+                    msg = Message(
+                        subject="Super Fitness Club Registration Confirmation",
+                        sender=app.config['MAIL_USERNAME'],
+                        recipients=[student_email],
+                        body=f"Hi {student_name},\n\nYou are registered for {day_of_week} at {time_of_day} ({session_length}).\n\nSee you in class!\n\n- Super Fitness Club Team"
+                    )
+                    mail.send(msg)
+                    flash("Successfully registered and confirmation email sent.", "success")
+                else:
+                    # Если мы на Render Free, пропускаем отправку email
+                    flash("Successfully registered (email sending skipped on Render Free plan).", "success")
             except Exception as e:
                 flash(f"Registered but failed to send confirmation email: {str(e)}", "warning")
 
         return redirect(url_for('schedule'))
 
     return render_template("schedule.html")
+
 
 # Страница профиля тренера
 @app.route("/trainer")
